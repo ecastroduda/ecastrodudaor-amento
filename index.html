@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orçamento Familiar Detalhado</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Orçamento Familiar Detalhado</h1>
+
+    <!-- Abas -->
+    <div class="tabs">
+        <div class="tab active" onclick="mudarAba('resumo')">Resumo e Gráfico</div>
+        <div class="tab" onclick="mudarAba('planejamento')">Planejamento</div>
+        <div class="tab" onclick="mudarAba('despesas')">Registro de Despesas</div>
+    </div>
+
+    <!-- Resumo e Gráfico -->
+    <div id="resumo" class="tab-content active">
+        <h2>Resumo do Orçamento</h2>
+        <canvas id="grafico-orcamento"></canvas>
+    </div>
+
+    <!-- Planejamento -->
+    <div id="planejamento" class="tab-content">
+        <h2>Planejamento</h2>
+        <form id="planning-form">
+            <label for="categoria">Categoria:</label>
+            <input type="text" id="categoria" name="categoria" required>
+            <label for="valor-planejado">Valor Planejado (R$):</label>
+            <input type="number" step="0.01" id="valor-planejado" name="valor-planejado" required>
+            <button type="submit">Adicionar Categoria</button>
+        </form>
+        <table id="planejamento-table">
+            <thead>
+                <tr>
+                    <th>Categoria</th>
+                    <th>Valor Planejado (R$)</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Linhas de orçamento serão adicionadas aqui dinamicamente -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Registro de Despesas -->
+    <div id="despesas" class="tab-content">
+        <h2>Registro de Despesas Diárias</h2>
+        <form id="despesas-form">
+            <label for="data">Data:</label>
+            <input type="date" id="data" name="data" required>
+            <label for="descricao">Descrição:</label>
+            <input type="text" id="descricao" name="descricao" required>
+            <label for="valor-gasto">Valor Gasto (R$):</label>
+            <input type="number" step="0.01" id="valor-gasto" name="valor-gasto" required>
+            <label for="categoria-despesa">Categoria:</label>
+            <select id="categoria-despesa" name="categoria-despesa" required>
+                <!-- Opções de categoria serão preenchidas dinamicamente -->
+            </select>
+            <button type="submit">Registrar Despesa</button>
+        </form>
+        <table id="despesas-table">
+            <thead>
+                <tr>
+                    <th>Data</th>
+                    <th>Descrição</th>
+                    <th>Valor Gasto (R$)</th>
+                    <th>Categoria</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Linhas de despesas serão adicionadas aqui dinamicamente -->
+            </tbody>
+        </table>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
